@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingApp", "TrainingApp\TrainingApp.csproj", "{FE27581A-84E0-4CAB-AEB4-7A62479E933D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewGrouper", "DataGridViewGrouper\DataGridViewGrouper\DataGridViewGrouper.csproj", "{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Debug|x86.Build.0 = Debug|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Release|x86.ActiveCfg = Release|Any CPU
+		{FE27581A-84E0-4CAB-AEB4-7A62479E933D}.Release|x86.Build.0 = Release|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Debug|x86.Build.0 = Debug|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|x86.ActiveCfg = Release|Any CPU
+		{785A6FBB-2BA0-42BE-84C4-1703BCAD15D2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DE7ECC1-CAF9-4B09-95B0-C36DC7C921EB}
+	EndGlobalSection
+EndGlobal
