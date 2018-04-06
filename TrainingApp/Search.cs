@@ -1,31 +1,23 @@
 ﻿using System;
 using System.Configuration;
+using System.Text;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using System.Collections.Generic;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace TrainingApp
 {
     
     public partial class Search : Form
     {
-        private string constr,searchStr,query;
+        private string constr, query;
+        private StringBuilder searchStr =  new StringBuilder("SELECT tm.TrainingTitle, tm.CertificationDate, tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID ");
         
-
-        public Search()
+        public Search(string constr)
         {
-
-            #if DEBUG
-            {
-                constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
-            }
-            #else
-            {
-                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
-            }
-            #endif
             InitializeComponent();
+            this.constr = constr;
         }
 
         private void Search_Load(object sender, EventArgs e)
@@ -54,8 +46,9 @@ namespace TrainingApp
         {
             using (OleDbConnection conn = new OleDbConnection(constr))
             {
-                OleDbCommand cmd = new OleDbCommand(searchStr, conn);
+                OleDbCommand cmd = new OleDbCommand(searchStr.ToString(), conn);
                 cmd.Parameters.Add("ID", OleDbType.Integer).Value = cmbEmployee.SelectedValue;
+                cmd.Parameters.Add("TrainingTitle", OleDbType.VarChar).Value = cmbTraining.Text;
 
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
 
@@ -142,7 +135,23 @@ namespace TrainingApp
         private void BtnCurrRep_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            Reports rp = new Reports(btn.Name.ToString(),(int)cmbEmployee.SelectedValue);
+            ReportClass displayReport = null;
+
+            switch (btn.Name)
+            {
+                case "BtnAllRep":
+                    {
+                        displayReport = new CREmpAll();
+                        break;
+                    }
+                case "BtnCurrRep":
+                    {
+                        displayReport = new CREmpCurr();
+                        break;
+                    }
+            }
+            displayReport.SetParameterValue("ID", cmbEmployee.SelectedValue);
+            Reports rp = new Reports(displayReport);
             rp.Show();
         }
         
@@ -219,23 +228,26 @@ namespace TrainingApp
         /// </summary>
         private void QuerySelection()
         {
+            searchStr.Clear();
+            searchStr = new StringBuilder("SELECT tm.TrainingTitle, tm.CertificationDate, tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID ");
+        
             if (rbAllTrain.Checked)
             {
                 if (rbAll.Checked)
                     //All Training
-                    searchStr = "SELECT tm.TrainingTitle, tm.CertificationDate,tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID ORDER BY tm.ExpiryDate,tm.TrainingTitle";
+                    searchStr.Append("ORDER BY tm.ExpiryDate,tm.TrainingTitle");
                 else
                     //All current training
-                    searchStr = "SELECT tm.TrainingTitle, tm.CertificationDate,tm.CertifiedByExperience, tm.ExpiryDate  FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID AND (tm.ExpiryDate > now() OR isNull(tm.ExpiryDate)=true ) ORDER BY tm.ExpiryDate,tm.TrainingTitle";
+                    searchStr.Append("AND (tm.ExpiryDate > now() OR isNull(tm.ExpiryDate)=true ) ORDER BY tm.ExpiryDate,tm.TrainingTitle");
             }
             else
             {
                 if (rbAll.Checked)
                     //All records of a specific training
-                    searchStr = "SELECT tm.TrainingTitle, tm.CertificationDate,tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID AND tm.TrainingTitle = '" + cmbTraining.SelectedValue.ToString().Trim() + "' ORDER BY tm.ExpiryDate,tm.TrainingTitle";
+                    searchStr.Append("AND tm.TrainingTitle = @TrainingTitle ORDER BY tm.ExpiryDate,tm.TrainingTitle");
                 else
                     //All current records for a specific training
-                    searchStr = "SELECT tm.TrainingTitle, tm.CertificationDate,tm.CertifiedByExperience, tm.ExpiryDate  FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID AND (tm.ExpiryDate > now() OR isNull(tm.ExpiryDate)=true ) AND tm.TrainingTitle = '" + cmbTraining.SelectedValue.ToString().Trim() + "' ORDER BY tm.ExpiryDate,tm.TrainingTitle";
+                    searchStr.Append("AND (tm.ExpiryDate > now() OR isNull(tm.ExpiryDate)=true ) AND tm.TrainingTitle = @TrainingTitle ORDER BY tm.ExpiryDate,tm.TrainingTitle");
             }
         }
     }

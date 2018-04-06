@@ -44,26 +44,26 @@
             // 
             // cmbEmployee
             // 
-            this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.FormattingEnabled = true;
             this.cmbEmployee.Location = new System.Drawing.Point(49, 45);
             this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(228, 26);
+            this.cmbEmployee.Size = new System.Drawing.Size(321, 26);
             this.cmbEmployee.TabIndex = 0;
             this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.CmbEmployee_SelectedIndexChanged);
             // 
             // cmbTraining
             // 
-            this.cmbTraining.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbTraining.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbTraining.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbTraining.Enabled = false;
             this.cmbTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTraining.FormattingEnabled = true;
             this.cmbTraining.Location = new System.Drawing.Point(49, 103);
             this.cmbTraining.Name = "cmbTraining";
-            this.cmbTraining.Size = new System.Drawing.Size(228, 26);
+            this.cmbTraining.Size = new System.Drawing.Size(321, 26);
             this.cmbTraining.TabIndex = 1;
             this.cmbTraining.SelectedIndexChanged += new System.EventHandler(this.CmbTraining_SelectedIndexChanged);
             // 
@@ -73,7 +73,7 @@
             this.dtpCertDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCertDate.Location = new System.Drawing.Point(49, 169);
             this.dtpCertDate.Name = "dtpCertDate";
-            this.dtpCertDate.Size = new System.Drawing.Size(200, 24);
+            this.dtpCertDate.Size = new System.Drawing.Size(228, 24);
             this.dtpCertDate.TabIndex = 2;
             this.dtpCertDate.ValueChanged += new System.EventHandler(this.dtpCertDate_ValueChanged);
             // 
@@ -82,7 +82,7 @@
             this.dtpExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpExpiryDate.Location = new System.Drawing.Point(49, 231);
             this.dtpExpiryDate.Name = "dtpExpiryDate";
-            this.dtpExpiryDate.Size = new System.Drawing.Size(200, 24);
+            this.dtpExpiryDate.Size = new System.Drawing.Size(228, 24);
             this.dtpExpiryDate.TabIndex = 3;
             // 
             // rbCertByExp
@@ -103,7 +103,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(49, 312);
+            this.btnAdd.Location = new System.Drawing.Point(92, 312);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 33);
             this.btnAdd.TabIndex = 5;
@@ -154,7 +154,7 @@
             // BtnCancel
             // 
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancel.Location = new System.Drawing.Point(202, 312);
+            this.BtnCancel.Location = new System.Drawing.Point(247, 312);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(75, 33);
             this.BtnCancel.TabIndex = 6;
@@ -166,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 367);
+            this.ClientSize = new System.Drawing.Size(461, 367);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.dtpCertDate);
             this.Controls.Add(this.label2);

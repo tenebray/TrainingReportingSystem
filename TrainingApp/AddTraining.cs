@@ -19,19 +19,10 @@ namespace TrainingApp
     {
         private string constr, query;
         
-        public AddTraining()
+        public AddTraining(string constr)
         {
             InitializeComponent();
-
-            #if DEBUG
-            {
-                constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
-            }
-            #else
-            {
-                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
-            }
-            #endif
+            this.constr = constr;
         }
 
         private void RbCertByExp_Click(object sender, EventArgs e)
@@ -114,10 +105,15 @@ namespace TrainingApp
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Would you like to cancel the addition of this training", "Cancel Add Training", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (FormChanged())
             {
-                this.Close();
+                if (MessageBox.Show("Would you like to cancel the addition of this training", "Cancel Add Training", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
             }
+            else
+                this.Close();
         }
 
         private void dtpCertDate_ValueChanged(object sender, EventArgs e)
@@ -177,14 +173,15 @@ namespace TrainingApp
 
                     cmd.Parameters.Add("Employee", OleDbType.Numeric).Value = cmbEmployee.SelectedValue;
                     cmd.Parameters.Add("TrainingTitle", OleDbType.VarChar).Value = cmbTraining.Text;
-                    cmd.Parameters.Add("CertificationDate", OleDbType.Date).Value = dtpCertDate.Value;
+                    cmd.Parameters.Add("CertificationDate", OleDbType.Date).Value = dtpCertDate.Value.Date;
                     cmd.Parameters.Add("CertByExp", OleDbType.Boolean).Value = certbyExp;
-                    cmd.Parameters.Add("ExpiryDate", OleDbType.Date).Value = dtpExpiryDate.Value;
+                    cmd.Parameters.Add("ExpiryDate", OleDbType.Date).Value = dtpExpiryDate.Value.Date;
 
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Training added for " + cmbEmployee.Text);
 
+                
                 if (MessageBox.Show("Add Training", "Would you like to add another record.", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     ResetForm();
@@ -192,6 +189,18 @@ namespace TrainingApp
                 else
                     this.Close();
             }
+        }
+
+        /// <summary>
+        /// Checks if form controls are set to default. returns true if form has changed
+        /// </summary>
+        /// <returns>Method returns a Boolean</returns>
+        private bool FormChanged()
+        {
+            if (cmbEmployee.SelectedIndex != -1 && cmbTraining.SelectedIndex != -1 && dtpCertDate.Value != DateTime.Now && dtpCertDate.Value != DateTime.Now && rbCertByExp.Checked)
+                return true;
+            else
+                return false;
         }
     }
 }

@@ -5,8 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using CrystalDecisions.CrystalReports.Engine;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace TrainingApp
 {
@@ -15,8 +16,21 @@ namespace TrainingApp
     /// </summary>
     public partial class Container : Form
     {
+        
+        private string constr;
+        
+            
         public Container()
-        {
+        {   
+            #if DEBUG
+            {
+                constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
+            }
+            #else
+            {
+                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
+            }
+            #endif
             InitializeComponent();
         }
         
@@ -31,7 +45,7 @@ namespace TrainingApp
         /// </summary>
         private void ReportPreLoad()
         {
-            Reports rp = new Reports("")
+            Reports rp = new Reports()
             {
                 WindowState = FormWindowState.Minimized
                 ,Size = new Size(20, 20)
@@ -43,16 +57,33 @@ namespace TrainingApp
         
         private void MIAllExpiringTraining_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            Reports rp = new Reports(item.Name.ToString());
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            ReportClass displayReport = null;
+
+            switch (item.Name)
+            {
+                case "MIAllExpiringTraining":
+                    {
+                        displayReport = new CRExpiringCerts();
+                        break;
+                    }
+                case "MIByDepartment":
+                    {
+                        displayReport = new CRExpiringCertsDept();
+                        break;
+                    }
+            }
+
+            Reports rp = new Reports(displayReport);
             rp.Show();
+            
         }
 
         private void ExpiringTrainingForm ()
         {
-            TrainingForm frm = new TrainingForm
+            TrainingForm frm = new TrainingForm(constr)
             {
-                MdiParent = this
+                MdiParent = this,
             };
             frm.Show();
         }
@@ -60,13 +91,37 @@ namespace TrainingApp
         private void TrainingMatrixReports_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            MatrixReports rp = new MatrixReports(item.Name.ToString());
+            CREmpTrainMatrix report = new CREmpTrainMatrix();
+            switch (item.Name)
+            {
+                case "MIEmployeeCurr":
+                    {
+                        report.SetParameterValue("ClassType", "Employee");
+
+                        break;
+                    }
+                case "MISupervisionCurr":
+                    {
+                        report.SetParameterValue("ClassType", "Supervision");
+                        break;
+                    }
+                case "MISeniorManageCurr":
+                    {
+                        report.SetParameterValue("ClassType", "Senior Management");
+                        break;
+                    }
+
+            }
+            Reports rp = new Reports(report)
+            {
+                Size = new Size(1400, 800)
+            };
             rp.Show();
         }
 
         private void MIEmployees_Click(object sender, EventArgs e)
         {
-            Search frm = new Search
+            Search frm = new Search(constr)
             {
                 MdiParent = this
             };
@@ -89,7 +144,7 @@ namespace TrainingApp
 
         private void NewEmployeeTrainingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddTraining frm = new AddTraining
+            AddTraining frm = new AddTraining(constr)
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None
@@ -100,7 +155,7 @@ namespace TrainingApp
 
         private void NewTrainingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddCourse frm = new AddCourse
+            AddCourse frm = new AddCourse(constr)
             {
                 MdiParent = this,
                 FormBorderStyle = FormBorderStyle.None

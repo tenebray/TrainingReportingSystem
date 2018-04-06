@@ -19,23 +19,16 @@ namespace TrainingApp
     public partial class TrainingForm : Form
     {
         // Uses DataGridView Grouper obtained from https://www.codeproject.com/Tips/995958/DataGridViewGrouper
-        private string constr;
-        private int mCount, qCount; //Used to count the number of certificates in either 1 or 3 months categories 
+      
+        private int underOneMonthCount, underThreeMonthCount; //Used to count the number of certificates in either 1 or 3 months categories 
+        string constr;
+       
 
         
-        public TrainingForm()
+        public TrainingForm(string constr)
         {
             InitializeComponent();
-
-            #if DEBUG
-            {
-                constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
-            }
-            #else
-            {
-                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
-            }
-            #endif
+            this.constr = constr;
         }
 
         private void TrainingForm_Load(object sender, EventArgs e)
@@ -49,8 +42,25 @@ namespace TrainingApp
 
                 da.Fill(dt);
 
-                dgvExpire.DataSource = dt;
                 
+
+
+                DataTable dtCopy = dt.Copy();
+                foreach (DataRow dr in dtCopy.Rows)
+                {
+                    var rowsToDelete = from DataRow row in dt.Rows
+                                       where (row["Name"].ToString().ToLowerInvariant() ==  dr["Name"].ToString().ToLowerInvariant() && (row["TrainingTitle"].ToString().ToLowerInvariant() == dr["TrainingTitle"].ToString().ToLowerInvariant()) && (Convert.ToDateTime(row["ExpiryDate"].ToString()) < Convert.ToDateTime(dr["ExpiryDate"].ToString())))
+                                       select row;
+
+                    foreach (var row in rowsToDelete.ToList())
+                        row.Delete();
+
+
+                    dt.AcceptChanges();
+                }
+
+                dtCopy = null;
+                dgvExpire.DataSource = dt;
             }
         }
 
@@ -75,37 +85,37 @@ namespace TrainingApp
         /// </summary>
         private void ColourGrid()
         {
-            mCount = 0;
-            qCount = 0;
+            underOneMonthCount = 0;
+            underThreeMonthCount = 0;
+
             foreach (DataGridViewRow row in dgvExpire.Rows)
             {
+
                 if (Convert.ToDateTime(row.Cells[1].Value) <= DateTime.Now.AddMonths(3))
                 {
                     if (Convert.ToDateTime(row.Cells[1].Value) <= DateTime.Now.AddMonths(1))
                     {
                         row.DefaultCellStyle.BackColor = Color.IndianRed;
-                        mCount++;
+                        underOneMonthCount++;
                     }
                     else
                     {
                         row.DefaultCellStyle.BackColor = Color.Coral;
-                        qCount++;
+                        underThreeMonthCount++;
                     }
-
                 }
+
 
             }
         }
-
-    
-
+        
         private void TrainingForm_Shown(object sender, EventArgs e)
         {
             ColourGrid();
 
             lblTotal.Text = "Total : " + dgvExpire.Rows.Count;
-            lblMonth.Text = "Under one month: " + mCount;
-            lblQuarter.Text = "Under three months : " + qCount;
+            lblMonth.Text = "Under one month: " + underOneMonthCount;
+            lblQuarter.Text = "Under three months : " + underThreeMonthCount;
         }
 
         private void DataGridViewGrouper1_GroupingChanged(object sender, EventArgs e)

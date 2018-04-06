@@ -18,7 +18,7 @@ namespace TrainingApp
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Container());
             //Application.Run(new CreateMatrix());
-
+            //Application.Run(new test());
         }
     }
 }

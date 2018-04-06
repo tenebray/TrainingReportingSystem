@@ -18,23 +18,10 @@ namespace TrainingApp
     public partial class AddCourse : Form
     {
         private string constr;
-        public AddCourse()
+        public AddCourse(string constr)
         {
             InitializeComponent();
-            #if DEBUG
-            {
-                constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
-            }
-            #else
-            {
-                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
-            }
-            #endif
-        }
-
-        private void AddCourse_Load(object sender, EventArgs e)
-        {
-
+            this.constr = constr;
         }
 
         private void ResetForm()
@@ -45,7 +32,7 @@ namespace TrainingApp
         }
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            bool expires =false , external = false, found = false;
+            bool expires = false, external = false, found = false;
             string query = "SELECT * FROM tbl_TrainingTitle";
             using (OleDbConnection conn = new OleDbConnection(constr))
             {
@@ -63,12 +50,11 @@ namespace TrainingApp
                     expires = true;
                 if (ChBxExternal.Checked)
                     external = true;
-                var arr = TxtTrainingTitle.Text.Trim().ToCharArray();
-                Char.ToUpperInvariant(arr[0]);
-                string temp = new String(arr);
 
-             
-                DataRow[] dr = dt.Select("TrainingTitle = '"+temp+"'");
+                string temp = TxtTrainingTitle.Text.Trim();
+                temp = Char.ToUpper(temp[0]) + temp.Substring(1);
+
+                DataRow[] dr = dt.Select("TrainingTitle = '" + temp + "'");
                 if (dr.Length == 0)
                 {
                     cmd.Parameters.Add("TrainingTitle", OleDbType.VarChar).Value = temp;
@@ -85,7 +71,7 @@ namespace TrainingApp
             }
             if (!found)
             {
-                if (MessageBox.Show( "Would you like to add another record.","Add Training", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Would you like to add another record?.", "Add Training", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     ResetForm();
                 }
@@ -94,20 +80,40 @@ namespace TrainingApp
             }
         }
 
+
+
         private void TxtTrainingTitle_TextChanged(object sender, EventArgs e)
-       {
-            if (TxtTrainingTitle.Text.Length == 0)
+        {
+            if (String.IsNullOrWhiteSpace(TxtTrainingTitle.Text) == true)
                 btnAdd.Enabled = false;
             else
-                btnAdd.Enabled= true;
+                btnAdd.Enabled = true;
+        }
+
+        private bool FormChanged()
+        {
+            if (String.IsNullOrWhiteSpace(TxtTrainingTitle.Text) && !ChbxExpires.Checked && !ChBxExternal.Checked)
+                return false;
+            else
+                return true;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Would you like to cancel the addition of this course", "Cancel Course Add", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (FormChanged() == true)
             {
-                this.Close();
+                if (MessageBox.Show("Would you like to cancel the addition of this course", "Cancel Course Add", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
             }
+            else
+                this.Close();
+        }
+
+        private void AddCourse_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

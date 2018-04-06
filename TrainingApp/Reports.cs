@@ -9,55 +9,22 @@ namespace TrainingApp
     /// </summary>
     public partial class Reports : Form
     {
-        private object Sender;//Name of the component used to open this form
-        private int EmpID;//Employee ID
+        private ReportClass DisplayReport;
 
-        public Reports(object Sender)
+        public Reports()
         {
             InitializeComponent();
-            this.Sender = Sender;
         }
 
-        public Reports(object Sender,int EmpID)
+        public Reports(ReportClass DisplayReport)
         {
             InitializeComponent();
-            this.Sender = Sender;
-            this.EmpID = EmpID;
+            this.DisplayReport = DisplayReport;
         }
 
         private void Reports_Load(object sender, EventArgs e)
         {
-           
-            switch (Sender)
-            {
-                case "MIAllExpiringTraining":
-                    {
-                        CRExpiringCerts a = new CRExpiringCerts();
-                        crpvReports.ReportSource = a;
-                        break;
-                    }
-                case "MIByDepartment":
-                    {
-                        CRExpiringCertsDept a = new CRExpiringCertsDept();
-                        crpvReports.ReportSource = a;
-                        break;
-                    }
-                case "BtnAllRep":
-                    {
-                        CREmpAll a = new CREmpAll();
-                        a.SetParameterValue("ID", EmpID);
-                        crpvReports.ReportSource = a;
-                        
-                        break;
-                    }
-                case "BtnCurrRep":
-                    {
-                        CREmpCurr a = new CREmpCurr();
-                        a.SetParameterValue("ID", EmpID);
-                        crpvReports.ReportSource = a;
-                        break;
-                    }
-            }
+            crpvReports.ReportSource = DisplayReport;
         }
     }
 }

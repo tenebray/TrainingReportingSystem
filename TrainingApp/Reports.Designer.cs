@@ -37,6 +37,7 @@
             this.crpvReports.ActiveViewIndex = -1;
             this.crpvReports.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crpvReports.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crpvReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crpvReports.Location = new System.Drawing.Point(0, 0);
             this.crpvReports.Name = "crpvReports";
             this.crpvReports.ShowCloseButton = false;
@@ -45,7 +46,7 @@
             this.crpvReports.ShowLogo = false;
             this.crpvReports.ShowParameterPanelButton = false;
             this.crpvReports.ShowRefreshButton = false;
-            this.crpvReports.Size = new System.Drawing.Size(890, 562);
+            this.crpvReports.Size = new System.Drawing.Size(884, 562);
             this.crpvReports.TabIndex = 5;
             this.crpvReports.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -53,7 +54,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 562);
+            this.ClientSize = new System.Drawing.Size(884, 562);
             this.Controls.Add(this.crpvReports);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Reports";
