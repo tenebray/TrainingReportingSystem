@@ -75,7 +75,7 @@
             this.dtpCertDate.Name = "dtpCertDate";
             this.dtpCertDate.Size = new System.Drawing.Size(228, 24);
             this.dtpCertDate.TabIndex = 2;
-            this.dtpCertDate.ValueChanged += new System.EventHandler(this.dtpCertDate_ValueChanged);
+            this.dtpCertDate.ValueChanged += new System.EventHandler(this.DtpCertDate_ValueChanged);
             // 
             // dtpExpiryDate
             // 

@@ -11,13 +11,15 @@ namespace TrainingApp
     
     public partial class Search : Form
     {
-        private string constr, query;
+        private string constr, query, reportSource;
         private StringBuilder searchStr =  new StringBuilder("SELECT tm.TrainingTitle, tm.CertificationDate, tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID ");
-        
-        public Search(string constr)
+        private ToolTip tp = new ToolTip();
+
+        public Search(string constr,string reportSource)
         {
             InitializeComponent();
             this.constr = constr;
+            this.reportSource = reportSource;
         }
 
         private void Search_Load(object sender, EventArgs e)
@@ -151,7 +153,7 @@ namespace TrainingApp
                     }
             }
             displayReport.SetParameterValue("ID", cmbEmployee.SelectedValue);
-            Reports rp = new Reports(displayReport);
+            Reports rp = new Reports(displayReport, reportSource);
             rp.Show();
         }
         
@@ -173,7 +175,6 @@ namespace TrainingApp
         private void BtnCurrRep_MouseHover(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            ToolTip tp = new ToolTip();
             tp.Show(btn.Tag.ToString(), btn);
         }
         
@@ -230,7 +231,7 @@ namespace TrainingApp
         {
             searchStr.Clear();
             searchStr = new StringBuilder("SELECT tm.TrainingTitle, tm.CertificationDate, tm.CertifiedByExperience, tm.ExpiryDate FROM[tbl_Personnel-HR] AS hr LEFT JOIN tbl_TrainingMatrix tm ON hr.ID = tm.Employee WHERE tm.Employee = @ID ");
-        
+
             if (rbAllTrain.Checked)
             {
                 if (rbAll.Checked)

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
 using Subro.Controls;
 
 namespace TrainingApp
@@ -41,10 +36,7 @@ namespace TrainingApp
                 DataTable dt = new DataTable();
 
                 da.Fill(dt);
-
                 
-
-
                 DataTable dtCopy = dt.Copy();
                 foreach (DataRow dr in dtCopy.Rows)
                 {
@@ -61,7 +53,7 @@ namespace TrainingApp
 
                 dtCopy = null;
                 dgvExpire.DataSource = dt;
-            }
+            };
         }
 
         /// <summary>

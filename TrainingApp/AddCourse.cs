@@ -90,6 +90,10 @@ namespace TrainingApp
                 btnAdd.Enabled = true;
         }
 
+        /// <summary>
+        /// Checks if form controls are set to default. returns true if form has changed
+        /// </summary>
+        /// <returns>Method returns a boolean</returns>
         private bool FormChanged()
         {
             if (String.IsNullOrWhiteSpace(TxtTrainingTitle.Text) && !ChbxExpires.Checked && !ChBxExternal.Checked)
@@ -109,11 +113,6 @@ namespace TrainingApp
             }
             else
                 this.Close();
-        }
-
-        private void AddCourse_Load(object sender, EventArgs e)
-        {
-           
         }
     }
 }

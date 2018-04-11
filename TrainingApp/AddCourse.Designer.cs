@@ -115,7 +115,6 @@
             this.Name = "AddCourse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCourse";
-            this.Load += new System.EventHandler(this.AddCourse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

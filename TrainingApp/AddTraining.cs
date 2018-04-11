@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TrainingApp
@@ -116,7 +109,7 @@ namespace TrainingApp
                 this.Close();
         }
 
-        private void dtpCertDate_ValueChanged(object sender, EventArgs e)
+        private void DtpCertDate_ValueChanged(object sender, EventArgs e)
         {
             dtpExpiryDate.MinDate = dtpCertDate.Value;
         }
@@ -178,6 +171,8 @@ namespace TrainingApp
                     cmd.Parameters.Add("ExpiryDate", OleDbType.Date).Value = dtpExpiryDate.Value.Date;
 
                     cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
                 }
                 MessageBox.Show("Training added for " + cmbEmployee.Text);
 

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using CrystalDecisions.CrystalReports.Engine;
 using System.Windows.Forms;
 using System.Configuration;
@@ -16,19 +11,21 @@ namespace TrainingApp
     /// </summary>
     public partial class Container : Form
     {
+        private string constr, reportSource;
         
-        private string constr;
-        
-            
         public Container()
         {   
             #if DEBUG
             {
                 constr = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
+                reportSource = @"C:\Users\colin.buchanan\Documents\allPipeAccess\allpipe_dcs_be_2013.mdb";
+                
+                
             }
             #else
             {
-                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;          
+                constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString; 
+                reportSource = @"\\Aefp01\share\allpipe_dcs\allpipe_dcs_be_2013.mdb"; 
             }
             #endif
             InitializeComponent();
@@ -47,7 +44,7 @@ namespace TrainingApp
         {
             Reports rp = new Reports()
             {
-                WindowState = FormWindowState.Minimized
+                WindowState = FormWindowState.Normal
                 ,Size = new Size(20, 20)
         };
             rp.Show();
@@ -74,7 +71,7 @@ namespace TrainingApp
                     }
             }
 
-            Reports rp = new Reports(displayReport);
+            Reports rp = new Reports(displayReport, reportSource);
             rp.Show();
             
         }
@@ -97,7 +94,6 @@ namespace TrainingApp
                 case "MIEmployeeCurr":
                     {
                         report.SetParameterValue("ClassType", "Employee");
-
                         break;
                     }
                 case "MISupervisionCurr":
@@ -112,7 +108,7 @@ namespace TrainingApp
                     }
 
             }
-            Reports rp = new Reports(report)
+            Reports rp = new Reports(report, reportSource)
             {
                 Size = new Size(1400, 800)
             };
@@ -121,7 +117,7 @@ namespace TrainingApp
 
         private void MIEmployees_Click(object sender, EventArgs e)
         {
-            Search frm = new Search(constr)
+            Search frm = new Search(constr, reportSource)
             {
                 MdiParent = this
             };
