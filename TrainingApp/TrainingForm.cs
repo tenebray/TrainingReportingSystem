@@ -53,7 +53,7 @@ namespace TrainingApp
 
                 dtCopy = null;
                 dgvExpire.DataSource = dt;
-            };
+            }
         }
 
         /// <summary>
