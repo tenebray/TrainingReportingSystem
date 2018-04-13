@@ -43,7 +43,8 @@ namespace TrainingApp
                 rbCertByExp.Enabled = true;
                 dtpExpiryDate.Enabled = true;
                 dtpExpiryDate.MinDate = dtpCertDate.Value;
-            
+                dtpExpiryDate.Value = dtpCertDate.Value.AddYears(3).AddDays(-1);
+
             }
             else
             {
@@ -112,6 +113,7 @@ namespace TrainingApp
         private void DtpCertDate_ValueChanged(object sender, EventArgs e)
         {
             dtpExpiryDate.MinDate = dtpCertDate.Value;
+            dtpExpiryDate.Value = dtpCertDate.Value.AddYears(3).AddDays(-1);
         }
 
         /// <summary>

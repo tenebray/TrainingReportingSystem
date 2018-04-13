@@ -73,7 +73,6 @@ namespace TrainingApp
 
             Reports rp = new Reports(displayReport, reportSource);
             rp.Show();
-            
         }
 
         private void ExpiringTrainingForm ()
@@ -81,6 +80,7 @@ namespace TrainingApp
             TrainingForm frm = new TrainingForm(constr)
             {
                 MdiParent = this,
+                Dock = DockStyle.Fill
             };
             frm.Show();
         }
@@ -119,8 +119,11 @@ namespace TrainingApp
         {
             Search frm = new Search(constr, reportSource)
             {
-                MdiParent = this
+                MdiParent = this,
+                Dock = DockStyle.Fill
             };
+
+
             frm.Show();
         }
 
@@ -143,8 +146,9 @@ namespace TrainingApp
             AddTraining frm = new AddTraining(constr)
             {
                 MdiParent = this,
-                FormBorderStyle = FormBorderStyle.None
-            };
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+        };
             frm.Show();
             frm.FormClosed += Container_ChildFormClosed;
         }
@@ -154,8 +158,9 @@ namespace TrainingApp
             AddCourse frm = new AddCourse(constr)
             {
                 MdiParent = this,
-                FormBorderStyle = FormBorderStyle.None
-            };
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+        };
             frm.Show();
             frm.FormClosed += Container_ChildFormClosed;
         }
