@@ -114,5 +114,10 @@ namespace TrainingApp
             else
                 this.Close();
         }
+
+        private void AddCourse_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -91,6 +91,11 @@ namespace TrainingApp
             CREmpTrainMatrix report = new CREmpTrainMatrix();
             switch (item.Name)
             {
+                case "MISelfEmployed":
+                    {
+                        report.SetParameterValue("ClassType", "Self Employed");
+                        break;
+                    }
                 case "MIEmployeeCurr":
                     {
                         report.SetParameterValue("ClassType", "Employee");
@@ -104,6 +109,11 @@ namespace TrainingApp
                 case "MISeniorManageCurr":
                     {
                         report.SetParameterValue("ClassType", "Senior Management");
+                        break;
+                    }
+                case "MIAllStaff":
+                    {
+                        report.SetParameterValue("ClassType", "All");
                         break;
                     }
 

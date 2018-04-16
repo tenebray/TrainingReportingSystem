@@ -36,6 +36,7 @@
             this.MIByDepartment = new System.Windows.Forms.ToolStripMenuItem();
             this.trainingMatrixReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentTraingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MIAllStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.MIEmployeeCurr = new System.Windows.Forms.ToolStripMenuItem();
             this.MISupervisionCurr = new System.Windows.Forms.ToolStripMenuItem();
             this.MISeniorManageCurr = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +46,7 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTrainingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newEmployeeTrainingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MISelfEmployed = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,12 +105,21 @@
             // currentTraingToolStripMenuItem
             // 
             this.currentTraingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MIAllStaff,
             this.MIEmployeeCurr,
             this.MISupervisionCurr,
-            this.MISeniorManageCurr});
+            this.MISeniorManageCurr,
+            this.MISelfEmployed});
             this.currentTraingToolStripMenuItem.Name = "currentTraingToolStripMenuItem";
             this.currentTraingToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.currentTraingToolStripMenuItem.Text = "Current Training ";
+            // 
+            // MIAllStaff
+            // 
+            this.MIAllStaff.Name = "MIAllStaff";
+            this.MIAllStaff.Size = new System.Drawing.Size(181, 22);
+            this.MIAllStaff.Text = "All Staff";
+            this.MIAllStaff.Click += new System.EventHandler(this.TrainingMatrixReports_Click);
             // 
             // MIEmployeeCurr
             // 
@@ -177,16 +188,23 @@
             this.newEmployeeTrainingToolStripMenuItem.Text = "New Training Record";
             this.newEmployeeTrainingToolStripMenuItem.Click += new System.EventHandler(this.NewEmployeeTrainingToolStripMenuItem_Click);
             // 
+            // MISelfEmployed
+            // 
+            this.MISelfEmployed.Name = "MISelfEmployed";
+            this.MISelfEmployed.Size = new System.Drawing.Size(181, 22);
+            this.MISelfEmployed.Text = "Self Employed";
+            // 
             // Container
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1008, 553);
+            this.ClientSize = new System.Drawing.Size(1008, 562);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Container";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Training Management";
@@ -218,5 +236,7 @@
         private System.Windows.Forms.ToolStripMenuItem MIEmployeeCurr;
         private System.Windows.Forms.ToolStripMenuItem MISupervisionCurr;
         private System.Windows.Forms.ToolStripMenuItem MISeniorManageCurr;
+        private System.Windows.Forms.ToolStripMenuItem MIAllStaff;
+        private System.Windows.Forms.ToolStripMenuItem MISelfEmployed;
     }
 }

@@ -44,69 +44,59 @@
             // 
             // cmbEmployee
             // 
-            this.cmbEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbEmployee.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbEmployee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEmployee.FormattingEnabled = true;
-            this.cmbEmployee.Location = new System.Drawing.Point(49, 45);
+            this.cmbEmployee.Location = new System.Drawing.Point(112, 93);
             this.cmbEmployee.Name = "cmbEmployee";
-            this.cmbEmployee.Size = new System.Drawing.Size(321, 26);
+            this.cmbEmployee.Size = new System.Drawing.Size(394, 26);
             this.cmbEmployee.TabIndex = 0;
             this.cmbEmployee.SelectedIndexChanged += new System.EventHandler(this.CmbEmployee_SelectedIndexChanged);
             // 
             // cmbTraining
             // 
-            this.cmbTraining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTraining.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbTraining.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbTraining.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbTraining.Enabled = false;
             this.cmbTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTraining.FormattingEnabled = true;
-            this.cmbTraining.Location = new System.Drawing.Point(49, 103);
+            this.cmbTraining.Location = new System.Drawing.Point(112, 151);
             this.cmbTraining.Name = "cmbTraining";
-            this.cmbTraining.Size = new System.Drawing.Size(321, 26);
+            this.cmbTraining.Size = new System.Drawing.Size(394, 26);
             this.cmbTraining.TabIndex = 1;
             this.cmbTraining.SelectedIndexChanged += new System.EventHandler(this.CmbTraining_SelectedIndexChanged);
             // 
             // dtpCertDate
             // 
-            this.dtpCertDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpCertDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtpCertDate.Enabled = false;
             this.dtpCertDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpCertDate.Location = new System.Drawing.Point(49, 169);
+            this.dtpCertDate.Location = new System.Drawing.Point(112, 217);
             this.dtpCertDate.Name = "dtpCertDate";
-            this.dtpCertDate.Size = new System.Drawing.Size(228, 24);
+            this.dtpCertDate.Size = new System.Drawing.Size(265, 24);
             this.dtpCertDate.TabIndex = 2;
             this.dtpCertDate.ValueChanged += new System.EventHandler(this.DtpCertDate_ValueChanged);
             // 
             // dtpExpiryDate
             // 
-            this.dtpExpiryDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpExpiryDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dtpExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpExpiryDate.Location = new System.Drawing.Point(49, 231);
+            this.dtpExpiryDate.Location = new System.Drawing.Point(112, 279);
             this.dtpExpiryDate.Name = "dtpExpiryDate";
-            this.dtpExpiryDate.Size = new System.Drawing.Size(228, 24);
+            this.dtpExpiryDate.Size = new System.Drawing.Size(265, 24);
             this.dtpExpiryDate.TabIndex = 3;
             // 
             // rbCertByExp
             // 
-            this.rbCertByExp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rbCertByExp.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbCertByExp.AutoCheck = false;
             this.rbCertByExp.AutoSize = true;
             this.rbCertByExp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbCertByExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbCertByExp.Location = new System.Drawing.Point(49, 278);
+            this.rbCertByExp.Location = new System.Drawing.Point(112, 326);
             this.rbCertByExp.Name = "rbCertByExp";
             this.rbCertByExp.Size = new System.Drawing.Size(173, 22);
             this.rbCertByExp.TabIndex = 4;
@@ -117,10 +107,11 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(92, 312);
+            this.btnAdd.Location = new System.Drawing.Point(155, 360);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 33);
+            this.btnAdd.Size = new System.Drawing.Size(112, 33);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -128,12 +119,10 @@
             // 
             // lblExpiry
             // 
-            this.lblExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblExpiry.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblExpiry.AutoSize = true;
             this.lblExpiry.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpiry.Location = new System.Drawing.Point(46, 210);
+            this.lblExpiry.Location = new System.Drawing.Point(109, 258);
             this.lblExpiry.Name = "lblExpiry";
             this.lblExpiry.Size = new System.Drawing.Size(83, 18);
             this.lblExpiry.TabIndex = 6;
@@ -141,12 +130,10 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(46, 148);
+            this.label2.Location = new System.Drawing.Point(109, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 18);
             this.label2.TabIndex = 7;
@@ -154,12 +141,10 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(46, 82);
+            this.label3.Location = new System.Drawing.Point(109, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 18);
             this.label3.TabIndex = 8;
@@ -167,12 +152,10 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 24);
+            this.label4.Location = new System.Drawing.Point(109, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 18);
             this.label4.TabIndex = 9;
@@ -180,10 +163,11 @@
             // 
             // BtnCancel
             // 
+            this.BtnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancel.Location = new System.Drawing.Point(247, 312);
+            this.BtnCancel.Location = new System.Drawing.Point(310, 360);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(75, 33);
+            this.BtnCancel.Size = new System.Drawing.Size(112, 33);
             this.BtnCancel.TabIndex = 6;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
@@ -194,7 +178,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(461, 367);
+            this.ClientSize = new System.Drawing.Size(639, 508);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.dtpCertDate);
             this.Controls.Add(this.label2);

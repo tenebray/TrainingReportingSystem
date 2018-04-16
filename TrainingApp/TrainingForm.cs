@@ -99,6 +99,8 @@ namespace TrainingApp
 
 
             }
+
+            dgvExpire.ClearSelection();
         }
         
         private void TrainingForm_Shown(object sender, EventArgs e)
@@ -109,7 +111,6 @@ namespace TrainingApp
             lblMonth.Text = "Under one month: " + underOneMonthCount;
             lblQuarter.Text = "Under three months : " + underThreeMonthCount;
         }
-
         private void DataGridViewGrouper1_GroupingChanged(object sender, EventArgs e)
         {
             ColourGrid();
