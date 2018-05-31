@@ -29,10 +29,10 @@ namespace EmailComponent1
             {
                 MailMessage message = new MailMessage();
                 message.To.Add(new MailAddress(toEmail, toName));
-                message.Subject = this.Subject;
+                message.Subject = Subject;
                 message.IsBodyHtml = true;
-                message.Body = this.MessageBody;
-                message.From = new MailAddress(this.FromEmail, this.FromName);//Sending Email address
+                message.Body = MessageBody;
+                message.From = new MailAddress(FromEmail, FromName);//Sending Email address
                 SmtpClient client = new SmtpClient(SmtpServer)
                 {
                     Credentials = SmtpCredentials,//username + password for sending account

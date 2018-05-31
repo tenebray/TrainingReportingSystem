@@ -193,6 +193,7 @@
             this.MISelfEmployed.Name = "MISelfEmployed";
             this.MISelfEmployed.Size = new System.Drawing.Size(181, 22);
             this.MISelfEmployed.Text = "Self Employed";
+            this.MISelfEmployed.Click += new System.EventHandler(this.TrainingMatrixReports_Click);
             // 
             // Container
             // 

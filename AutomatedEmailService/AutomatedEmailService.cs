@@ -15,7 +15,7 @@ namespace AutomatedEmailService
     {
         private Timer timer = null;
         private string ConnectionString = ConfigurationManager.ConnectionStrings["conStrDebug"].ConnectionString;
-        private string SendingEmailAccount = "tenebray12@gmail.com";
+        private string SendingEmailAccount = "";
         private string SendingEmailPassword = "";
         DataSet dsExpiringTraining;
         public AutomatedEmailService()
@@ -78,7 +78,7 @@ namespace AutomatedEmailService
             {
                 WriteEmail email = new WriteEmail
                 {
-                    FromEmail = "Tenebray12@gmail.com",
+                    FromEmail = "",
                     FromName = "Colin Buchanan",
                     Subject = "ExpiringTraining",
                     SmtpServer = "smtp.gmail.com",
